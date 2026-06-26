@@ -381,8 +381,8 @@
       <p style="margin-top:16px;max-width:38ch">Tell us about your business and the markets you sell into. We'll confirm eligibility and map a clear next step, usually within a day.</p>
       <p class="muted" style="margin-top:22px">Calibre Studio. AI-native digital studio, serving the UK, AU and beyond.</p>
     </div>
-    <!-- FORM: wire action to Calibre CRM / scheduler. Fire oaiq lead_created on submit. -->
-    <form method="post" action="#" onsubmit="return false;">
+    <!-- FORM posts to /api/lead → GoHighLevel (set HL_TOKEN + HL_LOCATION_ID env vars in Vercel). -->
+    <form id="lead-form" method="post" action="/api/lead">
       <div class="field"><label for="f-name">Name</label><input id="f-name" type="text" name="name" autocomplete="name" placeholder="Your name" required></div>
       <div class="field"><label for="f-email">Work email</label><input id="f-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required></div>
       <div class="field"><label for="f-site">Website</label><input id="f-site" type="url" name="website" autocomplete="url" placeholder="https://"></div>
@@ -443,6 +443,39 @@
     <span>&copy; 2026 Calibre Studio&reg; &nbsp;|&nbsp; GC &nbsp;|&nbsp; Paris</span>
   </div>
 </footer>
+
+<script>
+(function () {
+  var f = document.getElementById('lead-form');
+  if (!f) return;
+  function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+  f.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var btn = f.querySelector('button[type=submit]');
+    var label = btn ? btn.textContent : '';
+    if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
+    try {
+      var r = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: val('f-name'), email: val('f-email'), website: val('f-site'),
+          markets: val('f-markets'), message: val('f-msg')
+        })
+      });
+      if (!r.ok) throw new Error('bad status');
+      f.innerHTML = '<p style="color:#fff;font-size:1.1rem;line-height:1.5">Thanks. We\'ve got it, and we\'ll be in touch shortly, usually within a day.</p>';
+    } catch (err) {
+      if (btn) { btn.textContent = label; btn.disabled = false; }
+      var note = document.createElement('p');
+      note.className = 'muted';
+      note.style.marginTop = '4px';
+      note.textContent = 'Could not send right now. Please try again in a moment.';
+      f.appendChild(note);
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
