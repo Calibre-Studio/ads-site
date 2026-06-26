@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatGPT Ads, run for you | Calibre Studio</title>
+<meta name="description" content="Calibre runs ChatGPT Ads end to end: context-hint targeting, ad-blocker-proof tracking, and creative built for the conversation. Live in the US, UK, Canada, Australia and New Zealand.">
+<meta property="og:title" content="Be the answer inside ChatGPT | Calibre Studio">
+<meta property="og:description" content="ChatGPT is a paid channel now. We get you in early, set up measurement right, and run the campaigns.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://calibrestudio.b-cdn.net/Branding/CALIBRE-ICON-BLK.png">
+<link rel="icon" href="https://calibrestudio.b-cdn.net/Branding/CALIBRE-ICON-BLK.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" rel="stylesheet">
+<!-- TRACKING: paste the OpenAI (oaiq) pixel here in <head> before launch, plus server-side Conversions API. Fire lead_created on form submit. -->
+<style>
+  :root{
+    --ink:#000; --ink-2:rgba(0,0,0,.72); --ink-3:rgba(0,0,0,.56);
+    --line:rgba(0,0,0,.12); --line-2:rgba(0,0,0,.22);
+    --paper:#fff; --off:#f5f5f5;
+    --d-bg:#000; --d-ink-2:rgba(255,255,255,.74); --d-ink-3:rgba(255,255,255,.52);
+    --d-surface:rgba(255,255,255,.05); --d-line:rgba(255,255,255,.18);
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:'Fragment Mono',ui-monospace,Menlo,monospace;
+    --maxw:1180px; --z-nav:100;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.55;font-size:1.0625rem}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  h1,h2,h3{letter-spacing:-.025em;line-height:1.04;font-weight:800;text-wrap:balance}
+  h1{font-size:clamp(40px,6.4vw,76px)}
+  h2{font-size:clamp(28px,3.8vw,44px)}
+  h3{font-size:1.18rem;font-weight:700;letter-spacing:-.01em}
+  p{color:var(--ink-2);text-wrap:pretty}
+  .kicker{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);display:inline-block}
+  .dark .kicker{color:var(--d-ink-3)}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;font-weight:600;padding:13px 22px;border:1.5px solid var(--ink);border-radius:999px;transition:background .15s,color .15s,transform .12s}
+  .btn.solid{background:var(--ink);color:var(--paper)}
+  .btn.solid:hover{background:#1a1a1a}
+  .btn.ghost:hover{background:var(--off)}
+  .btn:active{transform:translateY(1px)}
+  section{padding:88px 0}
+  .band{background:var(--off)}
+  .dark{background:var(--d-bg);color:var(--paper)}
+  .dark p{color:var(--d-ink-2)}
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
+  .dark a:focus-visible,.dark button:focus-visible,.dark input:focus-visible,.dark textarea:focus-visible{outline-color:#fff}
+
+  header.nav{position:sticky;top:0;z-index:var(--z-nav);background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--mono);font-size:.92rem;letter-spacing:.02em;text-transform:uppercase}
+  .brand .mk{width:22px;height:22px;border-radius:5px;background:#000 center/cover no-repeat;flex:none}
+  .nav nav{display:flex;align-items:center;gap:24px;font-size:.92rem;color:var(--ink-2)}
+  .nav nav a:not(.btn):hover{color:var(--ink)}
+  @media(max-width:760px){.nav nav a:not(.btn){display:none}}
+
+  .hero{padding:74px 0 66px}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:54px;align-items:center}
+  @media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+  .hero h1{margin:16px 0 0}
+  .hero .lead{font-size:1.22rem;margin-top:22px;max-width:34ch;color:var(--ink-2)}
+  .hero .cta{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+  .chip{margin-top:26px;display:inline-flex;align-items:center;gap:10px;font-size:.78rem;font-family:var(--mono);color:var(--ink-3);border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+  .chip .dot{width:7px;height:7px;border-radius:50%;background:var(--ink);display:inline-block;flex:none}
+
+  .phone{background:var(--off);border:1px solid var(--line);border-radius:20px;padding:20px 18px 22px}
+  .msg{font-size:.9rem;color:var(--ink-2);background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:13px 15px}
+  .msg.you{background:var(--ink);color:#fff;border-color:var(--ink);margin-left:34px;border-bottom-right-radius:4px}
+  .msg.ai{margin-right:34px;margin-top:12px;border-bottom-left-radius:4px}
+  .adcard{margin-top:16px;border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:var(--paper)}
+  .adcard .sptag{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:9px 14px 0}
+  .adcard .row{display:flex;gap:12px;padding:8px 14px 14px;align-items:center}
+  .adcard .fav{width:38px;height:38px;border-radius:8px;background:#000 center/cover no-repeat;flex:none}
+  .adcard .t{font-weight:600;font-size:.95rem;color:var(--ink)}
+  .adcard .b{font-size:.81rem;color:var(--ink-3);margin-top:2px}
+
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:38px}
+  @media(max-width:680px){.stats{grid-template-columns:1fr}}
+  .stat{background:var(--paper);padding:28px 26px}
+  .band .stat{background:var(--paper)}
+  .stat .n{font-size:2.2rem;font-weight:800;letter-spacing:-.03em}
+  .stat .l{font-size:.85rem;color:var(--ink-3);margin-top:6px}
+
+  .lead-2{max-width:62ch;font-size:1.06rem}
+  .sec-head{margin-top:14px}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:34px}
+  @media(max-width:820px){.three{grid-template-columns:1fr}}
+  .card{border:1px solid var(--line);border-radius:14px;padding:24px;transition:border-color .15s}
+  .card:hover{border-color:var(--line-2)}
+  .band .card{background:var(--paper)}
+  .card h3{margin-bottom:9px}
+  .card p{font-size:.94rem}
+
+  .incl{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:34px}
+  @media(max-width:760px){.incl{grid-template-columns:1fr}}
+  .incl .it{display:flex;gap:14px;padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+  .incl .it b{display:block;margin-bottom:3px}
+  .incl .it p{font-size:.9rem}
+  .incl .k{font-family:var(--mono);font-size:.8rem;color:var(--ink-3);flex:none;width:26px;padding-top:2px}
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:34px}
+  @media(max-width:760px){.two{grid-template-columns:1fr}}
+  .pill{display:inline-block;font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;border:1px solid currentColor;border-radius:999px;padding:4px 12px;margin-bottom:14px}
+
+  .price{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;margin-top:34px}
+  @media(max-width:760px){.price{grid-template-columns:1fr}}
+  .pcard{border:1.5px solid var(--ink);border-radius:18px;padding:30px}
+  .pcard.alt{border:1px solid var(--line);background:var(--off)}
+  .pcard .plabel{font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--ink-3);text-transform:uppercase}
+  .pcard .amt{font-size:2.4rem;font-weight:800;letter-spacing:-.03em;margin:8px 0 2px}
+  .pcard ul{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:10px}
+  .pcard li{font-size:.9rem;color:var(--ink-2);padding-left:24px;position:relative}
+  .pcard li::before{content:"";position:absolute;left:0;top:9px;width:11px;height:2px;background:var(--ink)}
+
+  .steps{counter-reset:s;margin-top:34px;border-top:1px solid var(--line)}
+  .step{counter-increment:s;display:grid;grid-template-columns:64px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .step::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:.82rem;color:var(--ink-3)}
+  .step h3{margin-bottom:4px}
+  .step p{font-size:.94rem}
+
+  .faq{margin-top:30px;border-top:1px solid var(--line)}
+  details{border-bottom:1px solid var(--line)}
+  summary{cursor:pointer;list-style:none;padding:20px 0;font-weight:600;font-size:1.08rem;display:flex;justify-content:space-between;gap:16px;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--ink-3);font-size:1.4rem;line-height:1}
+  details[open] summary::after{content:"\2212"}
+  details .a{padding:0 0 22px;font-size:.96rem;color:var(--ink-2);max-width:72ch}
+
+  .formwrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  @media(max-width:820px){.formwrap{grid-template-columns:1fr}}
+  form{display:flex;flex-direction:column;gap:14px}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field label{font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;color:var(--d-ink-2)}
+  input,textarea{font:inherit;font-size:.94rem;padding:13px 15px;border:1px solid var(--d-line);background:var(--d-surface);color:#fff;border-radius:10px;width:100%}
+  input::placeholder,textarea::placeholder{color:rgba(255,255,255,.5)}
+  .dark .btn.solid{background:#fff;color:var(--ink);border-color:#fff}
+  .dark .btn.solid:hover{background:#ededed}
+  .muted{color:var(--ink-3);font-size:.8rem}
+  .dark .muted{color:var(--d-ink-3)}
+
+  /* ---- Footer (matched to getfound/presence/indexed siblings) ---- */
+  footer{border-top:1px solid var(--line);padding-top:72px}
+  .foot-top{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding-bottom:56px}
+  @media(max-width:860px){.foot-top{grid-template-columns:1fr;gap:40px}}
+  .foot-headline{font-size:clamp(28px,3.4vw,40px);font-weight:800;letter-spacing:-.025em;max-width:14ch}
+  .reel{margin-top:30px;max-width:420px}
+  .reel-box{aspect-ratio:16/9;background:#000;border-radius:4px}
+  .reel-cap{display:flex;justify-content:space-between;margin-top:10px;font-family:var(--mono);font-size:.72rem;color:var(--ink-3)}
+  .foot-right{display:flex;flex-direction:column;gap:40px}
+  .foot-row{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start}
+  @media(max-width:520px){.foot-row{grid-template-columns:1fr;gap:12px}}
+  .foot-lab{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);padding-top:6px}
+  .foot-links{list-style:none}
+  .foot-links a{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:.82rem;letter-spacing:.02em;text-transform:uppercase;padding:13px 0;border-bottom:1px solid var(--line);transition:padding-left .15s}
+  .foot-links a:hover{padding-left:6px}
+  .foot-links a .dot{width:6px;height:6px;border-radius:50%;background:var(--ink)}
+  .socials{display:flex;gap:18px;align-items:center;padding-top:4px}
+  .socials a{display:inline-flex;color:var(--ink)}
+  .socials svg{width:19px;height:19px;display:block}
+  .socials a:hover{opacity:.6}
+  .foot-mark{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;padding:30px 0}
+  .wordmark{height:clamp(40px,7vw,92px);width:auto;max-width:78%}
+  .foot-actions{display:flex;align-items:center;gap:22px;flex:none}
+  .backtop{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;color:var(--ink-2);display:inline-flex;gap:8px;align-items:center}
+  .backtop:hover{color:var(--ink)}
+  .foot-legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line);padding:22px 0 40px;font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-3)}
+  .foot-legal a:hover{color:var(--ink)}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="mk" style="background-image:url('https://calibrestudio.b-cdn.net/Branding/CALIBRE-ICON-BLK.png')" aria-hidden="true"></span> Calibre Studio</a>
+    <nav aria-label="Primary">
+      <a href="#why">Why ChatGPT</a>
+      <a href="#included">What you get</a>
+      <a href="#pricing">Pricing</a>
+      <a class="btn solid" href="#book">Book a sprint &rarr;</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">// ChatGPT Ads</span>
+      <h1>Be the answer inside ChatGPT.</h1>
+      <p class="lead">Your next customer is asking ChatGPT right now. We run the ads that put your brand in the conversation, at the exact moment they're deciding.</p>
+      <div class="cta">
+        <a class="btn solid" href="#book">Book a setup sprint &rarr;</a>
+        <a class="btn ghost" href="#eligibility">Check your eligibility</a>
+      </div>
+      <span class="chip"><span class="dot" aria-hidden="true"></span> You're reading this because a ChatGPT ad worked.</span>
+    </div>
+    <div class="phone" aria-hidden="true">
+      <div class="msg you">What's the best way to advertise my business inside ChatGPT?</div>
+      <div class="msg ai">Good question. ChatGPT Ads use "context hints" instead of keywords. Here's how they work, and a studio that sets them up end to end:</div>
+      <div class="adcard">
+        <div class="sptag">Sponsored</div>
+        <div class="row">
+          <div class="fav" style="background-image:url('https://calibrestudio.b-cdn.net/Branding/CALIBRE-ICON-BLK.png')"></div>
+          <div>
+            <div class="t">Run ChatGPT Ads, done for you</div>
+            <div class="b">Calibre sets up your campaign end to end. Early-mover pricing.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="why">
+  <div class="wrap">
+    <span class="kicker">// The shift</span>
+    <h2 class="sec-head" style="max-width:18ch">ChatGPT is a paid channel now. Almost nobody is running it.</h2>
+    <p class="lead-2" style="margin-top:18px">OpenAI opened ChatGPT Ads to self-serve advertisers with no minimum spend. It's live in the US, UK, Canada, Australia and New Zealand. The advertisers who build campaign history and creative learnings now will have a structural cost advantage before the rest catch up.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">$60&#8202;&#8594;&#8202;$25</div><div class="l">CPMs in the first ten weeks. Early is cheap.</div></div>
+      <div class="stat"><div class="n">$0</div><div class="l">Minimum spend. Start at any budget.</div></div>
+      <div class="stat"><div class="n">Months</div><div class="l">Not years. That's the early-mover window.</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="kicker">// Context hints</span>
+    <h2 class="sec-head" style="max-width:20ch">Not keywords. The conversation itself.</h2>
+    <p class="lead-2" style="margin-top:18px">On Google you bid on words. On Meta you guess at interests. In ChatGPT you target <strong>context hints</strong>: plain-language descriptions of the situation your buyer is actually in. Someone mid-decision, describing their exact problem, is a different quality of intent than anything search or social can offer.</p>
+    <div class="three">
+      <div class="card"><h3>Mid-decision intent</h3><p>Your ad appears while someone is weighing options and ready to act, not idly scrolling.</p></div>
+      <div class="card"><h3>Written for the moment</h3><p>chat_card creative built to read as a useful continuation of the answer, never a repurposed banner.</p></div>
+      <div class="card"><h3>Measured properly</h3><p>A pixel and a server-side Conversions API, so ad blockers and cookie limits don't hide your results.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="included">
+  <div class="wrap">
+    <span class="kicker">// The setup sprint</span>
+    <h2 class="sec-head" style="max-width:20ch">We stand up the whole channel in about five days.</h2>
+    <div class="incl">
+      <div class="it"><span class="k">01</span><div><b>Account and verification</b><p>Ads Manager setup, business verification, billing and brand identity, done right the first time.</p></div></div>
+      <div class="it"><span class="k">02</span><div><b>Tracking before launch</b><p>OpenAI pixel, server-side Conversions API and UTMs, installed and verified before a dollar is spent.</p></div></div>
+      <div class="it"><span class="k">03</span><div><b>Context-hint strategy</b><p>Mapped to the real ChatGPT conversations your buyers are having. Intent, not keyword guesses.</p></div></div>
+      <div class="it"><span class="k">04</span><div><b>chat_card creative</b><p>Title, body and image built for a mid-conversation reader, in your voice.</p></div></div>
+      <div class="it"><span class="k">05</span><div><b>Campaign build</b><p>Click-objective campaigns and ad groups by intent, in the GEOs that are open to you.</p></div></div>
+      <div class="it"><span class="k">06</span><div><b>First optimization and handover</b><p>Seven to fourteen days of tuning, then a clear handover. Or we keep running it.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap">
+    <span class="kicker">// Organic + paid</span>
+    <h2 class="sec-head" style="max-width:22ch">Own the whole AI conversation, not half of it.</h2>
+    <div class="two">
+      <div>
+        <span class="pill" style="color:var(--d-ink-3)">Organic, already ours</span>
+        <h3 style="font-size:1.35rem">Be the brand AI <em>recommends</em></h3>
+        <p style="margin-top:10px">Our AI-visibility work gets you cited inside ChatGPT's own answers. Earned, not paid. <a href="https://getfound.calibrestudio.co" style="border-bottom:1px solid rgba(255,255,255,.4)">Get Found</a></p>
+      </div>
+      <div>
+        <span class="pill" style="color:#fff">Paid, this</span>
+        <h3 style="font-size:1.35rem">Be the brand AI <em>shows</em></h3>
+        <p style="margin-top:10px">ChatGPT Ads put a sponsored placement in the same conversation. Together, you're impossible to miss.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="kicker">// Early signal</span>
+    <h2 class="sec-head" style="max-width:20ch">The numbers people are seeing.</h2>
+    <div class="stats">
+      <div class="stat"><div class="n">~1.5&#215;</div><div class="l">Higher conversion rate from ChatGPT referrals vs other digital channels.</div></div>
+      <div class="stat"><div class="n">60&#8211;80%</div><div class="l">More time on site than social traffic. High-intent behaviour.</div></div>
+      <div class="stat"><div class="n">Decision-makers</div><div class="l">The paid Go tier skews founders, freelancers and SMB owners with real buying authority.</div></div>
+    </div>
+    <p class="muted" style="margin-top:18px;max-width:60ch">Early-channel and industry figures, shared to set expectations, not a performance guarantee.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <span class="kicker">// Straight talk</span>
+    <h2 class="sec-head" style="max-width:22ch">It's early. We run it like a pilot, and we tell you the truth.</h2>
+    <div class="two">
+      <div class="card"><h3>What we promise</h3><p style="margin-top:8px">Correct setup, real measurement, sharp creative, and a fast read on whether this channel works for you, while it's still cheap to learn.</p></div>
+      <div class="card"><h3>What we won't promise</h3><p style="margin-top:8px">A guaranteed return on a platform that's weeks old, EU reach (not open yet), or that software does the whole job. The hands-on work is the point.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <span class="kicker">// Pricing</span>
+    <h2 class="sec-head" style="max-width:16ch">Fixed scope. No lock-in.</h2>
+    <div class="price">
+      <div class="pcard">
+        <span class="plabel">Setup Sprint</span>
+        <div class="amt">USD $1,750&#8211;2,500</div>
+        <p style="font-size:.9rem">One-time, about five working days. Everything above: account, tracking, strategy, creative, build, first optimization.</p>
+        <ul>
+          <li>Fixed price, agreed up front</li>
+          <li>Live campaigns and verified tracking</li>
+          <li>Handover doc and walkthrough</li>
+        </ul>
+        <a class="btn solid" href="#book" style="margin-top:22px">Book a sprint &rarr;</a>
+      </div>
+      <div class="pcard alt">
+        <span class="plabel">Ongoing management</span>
+        <div class="amt">From data</div>
+        <p style="font-size:.9rem">Once your campaigns have run, monthly optimization and reporting, typically 15 to 25% of media spend. We only recommend it when there's real performance to manage.</p>
+        <ul>
+          <li>Weekly testing and optimization</li>
+          <li>Conversion-focused reporting</li>
+          <li>Cancel anytime</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="eligibility">
+  <div class="wrap">
+    <span class="kicker">// Who it's for</span>
+    <h2 class="sec-head" style="max-width:22ch">A quick honesty check before we take your money.</h2>
+    <div class="two">
+      <div class="card"><h3>Best fit</h3><p style="margin-top:8px">B2B and SaaS, considered purchases, longer-cycle services, education and training. Anyone whose buyers research before they commit. Live for advertisers in the US, UK, Canada, Australia and New Zealand.</p></div>
+      <div class="card"><h3>Not yet</h3><p style="margin-top:8px">Restricted categories (finance, health, legal, gambling, alcohol, adult, political), the EU (not open), and hyper-local targeting (country-level only for now). We'll tell you straight if it's not your channel.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="kicker">// How it works</span>
+    <h2 class="sec-head" style="max-width:16ch">From call to live in days.</h2>
+    <div class="steps">
+      <div class="step"><div><h3>Strategy call</h3><p>Your goals, your offer, the GEOs open to you. We confirm fit and eligibility.</p></div></div>
+      <div class="step"><div><h3>Audit</h3><p>Your funnel, landing pages and the conversations where you can credibly show up.</p></div></div>
+      <div class="step"><div><h3>Plan</h3><p>Context hints, creative angles and a test matrix built for fast learning.</p></div></div>
+      <div class="step"><div><h3>Build and launch</h3><p>Account, tracking, creative, campaigns. Configured and live.</p></div></div>
+      <div class="step"><div><h3>Optimize</h3><p>We read the signal, cut what doesn't work, and scale what does.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <span class="kicker">// Questions</span>
+    <h2 class="sec-head">FAQ</h2>
+    <div class="faq">
+      <details><summary>How is this different from Google or Meta ads?</summary><div class="a">No keywords, no interest profiles. You target context hints, plain-language descriptions of the situation your buyer is in. The ad appears mid-conversation, as a clearly-labelled sponsored card below ChatGPT's answer. It doesn't change what ChatGPT says.</div></details>
+      <details><summary>Who actually sees ChatGPT ads?</summary><div class="a">Users on ChatGPT's Free and Go tiers. The Go tier ($8/mo) skews toward founders, freelancers and small-business decision-makers, people with real buying authority, which is part of why early performance data is strong for considered purchases.</div></details>
+      <details><summary>Can you run this from Australia for our UK or US business?</summary><div class="a">Yes. We run a verified account that can target every open market: the US, UK, Canada, Australia and New Zealand. Targeting is country-level for now. The EU isn't open yet.</div></details>
+      <details><summary>How do you measure results?</summary><div class="a">A browser pixel plus the server-side Conversions API (which survives ad blockers and cookie limits), UTMs, and a dedicated analytics view. Because a lot of ChatGPT-driven conversions arrive later via branded search or direct, we watch those during campaigns too.</div></details>
+      <details><summary>What does a ChatGPT ad look like?</summary><div class="a">A "chat_card" below the response: a short title, a line of body copy, an image and a link, clearly marked Sponsored. We write and design it for the conversation it appears in.</div></details>
+      <details><summary>Should we move our Google or Meta budget to it?</summary><div class="a">No. It's a new layer that reaches people earlier in their research, while your existing channels catch them at the moment of action. We run it alongside, measured together.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="book">
+  <div class="wrap formwrap">
+    <div>
+      <span class="kicker">// Get started</span>
+      <h2 class="sec-head" style="max-width:16ch">Book a setup sprint.</h2>
+      <p style="margin-top:16px;max-width:38ch">Tell us about your business and the markets you sell into. We'll confirm eligibility and map a clear next step, usually within a day.</p>
+      <p class="muted" style="margin-top:22px">Calibre Studio. AI-native digital studio, serving the UK, AU and beyond.</p>
+    </div>
+    <!-- FORM: wire action to Calibre CRM / scheduler. Fire oaiq lead_created on submit. -->
+    <form method="post" action="#" onsubmit="return false;">
+      <div class="field"><label for="f-name">Name</label><input id="f-name" type="text" name="name" autocomplete="name" placeholder="Your name" required></div>
+      <div class="field"><label for="f-email">Work email</label><input id="f-email" type="email" name="email" autocomplete="email" placeholder="you@company.com" required></div>
+      <div class="field"><label for="f-site">Website</label><input id="f-site" type="url" name="website" autocomplete="url" placeholder="https://"></div>
+      <div class="field"><label for="f-markets">Where do you sell?</label><input id="f-markets" type="text" name="markets" placeholder="e.g. UK, US"></div>
+      <div class="field"><label for="f-msg">What are you hoping to achieve?</label><textarea id="f-msg" name="message" rows="3" placeholder="A line or two on your offer and goals"></textarea></div>
+      <button class="btn solid" type="submit" style="margin-top:4px">Request a sprint &rarr;</button>
+      <span class="muted">No spam. We reply personally.</span>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER: matched to getfound/presence/indexed siblings. Verify Terms/Privacy + Book-a-call (Calendly) URLs; wire the Directed reel embed. -->
+<footer>
+  <div class="wrap foot-top">
+    <div class="foot-left">
+      <h2 class="foot-headline">Exploring the space between art and technology</h2>
+      <div class="reel">
+        <div class="reel-box" aria-hidden="true"><!-- Directed reel embed --></div>
+        <div class="reel-cap"><span>// Directed</span><span>1:11</span></div>
+      </div>
+    </div>
+    <div class="foot-right">
+      <div class="foot-row">
+        <span class="foot-lab">Be found</span>
+        <ul class="foot-links">
+          <li><a href="https://indexed.calibrestudio.co">Free AI check <span class="dot" aria-hidden="true"></span></a></li>
+          <li><a href="https://buy.stripe.com/5kQ28t0Si6j6fqC7jE6c009">Audit + Plan <span class="dot" aria-hidden="true"></span></a></li>
+          <li><a href="https://buy.stripe.com/28EcN7dF49vi6U65bw6c00a">Get Found Sprint <span class="dot" aria-hidden="true"></span></a></li>
+          <li><a href="https://buy.stripe.com/3cI28t1Wm0YM3HUavQ6c00b">Always-On <span class="dot" aria-hidden="true"></span></a></li>
+          <li><a href="https://www.calibrestudio.co/intelligence">Intelligence <span class="dot" aria-hidden="true"></span></a></li>
+        </ul>
+      </div>
+      <div class="foot-row">
+        <span class="foot-lab">Follow</span>
+        <div class="socials">
+          <a href="https://www.instagram.com/calibrestudio_" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://twitter.com/Thor_Elias" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3l-7 8 8.2 10h-6.4l-5-6.1L7 21H4l7.5-8.6L3.5 3H10l4.5 5.6L17.5 3zm-1.1 16h1.7L7.7 4.8H5.9L16.4 19z"/></svg></a>
+          <a href="https://www.linkedin.com/company/calibrestudio/" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9.5h4V21H3V9.5zM10 9.5h3.8v1.6h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.74 2.6 4.74 6V21H22.4v-5.3c0-1.27-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.8V21H14.8V9.5z"/></svg></a>
+          <a href="https://dribbble.com/CalibreStudio" aria-label="Dribbble"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9.2"/><path d="M5 7c3.5 4 9 6 14.5 5.5M8 3.8C12 8 14.5 13.5 15 20.2M21 9.5C15 9 9 10.5 4.3 15.5"/></svg></a>
+          <a href="https://www.facebook.com/CalibreStudio.Co" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.4c0-.9.25-1.5 1.5-1.5H17V4.2c-.3 0-1.3-.12-2.4-.12-2.4 0-4.1 1.46-4.1 4.16v2.26H8v3h2.5V21h3z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap foot-mark">
+    <img class="wordmark" src="https://calibrestudio.b-cdn.net/Branding/Calibre_Studio-logo.png" alt="Calibre Studio" onerror="this.style.display='none'">
+    <div class="foot-actions">
+      <a class="backtop" href="#top">Back to top &uarr;</a>
+      <a class="btn solid" href="#book">Book a call</a>
+    </div>
+  </div>
+
+  <div class="wrap foot-legal">
+    <span><a href="https://www.calibrestudio.co">Terms</a> &nbsp;&middot;&nbsp; <a href="https://www.calibrestudio.co">Privacy</a></span>
+    <span>&copy; 2026 Calibre Studio&reg; &nbsp;|&nbsp; GC &nbsp;|&nbsp; Paris</span>
+  </div>
+</footer>
+
+</body>
+</html>
