@@ -50,6 +50,11 @@ export default async function handler(req, res) {
     });
   }
 
+  // Custom fields (created in HL): structured, visible, filterable - not buried in a note.
+  const customFields = [];
+  if (markets) customFields.push({ id: "WMSxOY0PPhunJvbk4uHf", field_value: markets }); // ChatGPT Ads - Sells In
+  if (message) customFields.push({ id: "YSPfOd2Z4rwNls3BD4wb", field_value: message }); // ChatGPT Ads - Goal
+
   try {
     const up = await hl("/contacts/upsert", {
       locationId: locationId,
@@ -59,7 +64,8 @@ export default async function handler(req, res) {
       name: name || undefined,
       website: website || undefined,
       source: "ChatGPT Ads landing (ads.calibrestudio.co)",
-      tags: ["chatgpt-ads", "ads.calibrestudio.co"]
+      tags: ["chatgpt-ads", "ads.calibrestudio.co"],
+      customFields: customFields.length ? customFields : undefined
     });
 
     const upJson = await up.json().catch(function () { return {}; });
