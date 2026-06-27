@@ -13,7 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" rel="stylesheet">
-<!-- TRACKING: paste the OpenAI (oaiq) pixel here in <head> before launch, plus server-side Conversions API. Fire lead_created on form submit. -->
+<!-- OpenAI (oaiq) conversion pixel - Calibre Studio data source. NOTE: set debug:false before going fully live. -->
+<script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"9BcrW881wcT7tsruuiAxCV",debug:true});</script>
 <style>
   :root{
     --ink:#000; --ink-2:rgba(0,0,0,.72); --ink-3:rgba(0,0,0,.56);
@@ -449,21 +450,25 @@
   var f = document.getElementById('lead-form');
   if (!f) return;
   function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+  function uuid() { try { return crypto.randomUUID(); } catch (e) { return 'eid-' + Date.now() + '-' + Math.random().toString(16).slice(2); } }
   f.addEventListener('submit', async function (e) {
     e.preventDefault();
     var btn = f.querySelector('button[type=submit]');
     var label = btn ? btn.textContent : '';
     if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
+    var eid = uuid();
     try {
       var r = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: val('f-name'), email: val('f-email'), website: val('f-site'),
-          markets: val('f-markets'), message: val('f-msg')
+          markets: val('f-markets'), message: val('f-msg'),
+          event_id: eid, page_url: location.href
         })
       });
       if (!r.ok) throw new Error('bad status');
+      try { if (window.oaiq) oaiq("measure", "lead_created", { type: "customer_action" }, { event_id: eid }); } catch (e) {}
       f.innerHTML = '<p style="color:#fff;font-size:1.1rem;line-height:1.5">Thanks. We\'ve got it, and we\'ll be in touch shortly, usually within a day.</p>';
     } catch (err) {
       if (btn) { btn.textContent = label; btn.disabled = false; }
