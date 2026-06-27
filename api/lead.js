@@ -78,6 +78,31 @@ export default async function handler(req, res) {
       await hl("/contacts/" + contactId + "/notes", { body: note }).catch(function () {});
     }
 
+    // Server-side Conversions API (ad-blocker-proof). Dedupes with the browser pixel via shared event_id.
+    const oaiKey = process.env.OAI_CONVERSION_KEY;
+    const pixelId = process.env.OAI_PIXEL_ID || "9BcrW881wcT7tsruuiAxCV";
+    if (oaiKey) {
+      const eventId = String(body.event_id || "").trim() || ("srv-" + Date.now());
+      const sourceUrl = String(body.page_url || "").trim() || "https://ads.calibrestudio.co/";
+      try {
+        await fetch("https://bzr.openai.com/v1/events?pid=" + pixelId, {
+          method: "POST",
+          headers: { Authorization: "Bearer " + oaiKey, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            validate_only: false,
+            events: [{
+              id: eventId,
+              type: "lead_created",
+              timestamp_ms: Date.now(),
+              source_url: sourceUrl,
+              action_source: "web",
+              data: { type: "customer_action" }
+            }]
+          })
+        });
+      } catch (e) { /* best effort: never block the lead on tracking */ }
+    }
+
     return res.status(200).json({ ok: true });
   } catch (e) {
     return res.status(500).json({ ok: false, error: "Something went wrong. Please try again." });
