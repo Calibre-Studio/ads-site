@@ -1,0 +1,38 @@
+# ChatGPT Ads by Calibre Studio
+
+> ChatGPT Ads, run for you. Calibre Studio sets up and runs ChatGPT advertising end to end — context-hint targeting, ad-blocker-proof tracking and creative built for the conversation — so your brand is the sponsored answer at the moment a buyer is deciding. Live for advertisers in the US, UK, Canada, Australia and New Zealand.
+
+## What it is
+ChatGPT is a paid channel now, and almost nobody is running it. OpenAI opened ChatGPT Ads to self-serve advertisers with no minimum spend. The advertisers who build campaign history and creative learnings now gain a structural cost advantage before the rest catch up — early CPMs have run cheap, roughly $60 down toward $25 in the first ten weeks. Calibre runs the whole channel for you, as a pilot, and tells you the truth about whether it works while it's still cheap to learn.
+
+## Context hints, not keywords
+On Google you bid on words; on Meta you guess at interests; in ChatGPT you target context hints — plain-language descriptions of the situation your buyer is actually in. The ad appears mid-decision as a clearly-labelled "chat_card" below ChatGPT's answer (a short title, body line, image and link). It does not change what ChatGPT says. Measurement uses a browser pixel plus a server-side Conversions API, so ad blockers and cookie limits don't hide your results.
+
+## The setup sprint
+About five working days, fixed scope:
+- Account and verification: Ads Manager setup, business verification, billing and brand identity.
+- Tracking before launch: OpenAI pixel, server-side Conversions API and UTMs, installed and verified before any spend.
+- Context-hint strategy: mapped to the real ChatGPT conversations your buyers are having.
+- chat_card creative: title, body and image written for a mid-conversation reader, in your voice.
+- Campaign build: click-objective campaigns and ad groups by intent, in the GEOs open to you.
+- First optimization and handover: seven to fourteen days of tuning, then a clear handover — or we keep running it.
+
+## Pricing
+- Setup Sprint: USD $1,750–2,500, one-time, about five working days. Fixed price agreed up front, no lock-in.
+- Ongoing management: from 15–25% of media spend, monthly optimization and reporting, cancel anytime. Recommended only when there is real performance to manage.
+
+## Who it is for
+Best fit: B2B and SaaS, considered purchases, longer-cycle services, education and training — anyone whose buyers research before they commit. Live for advertisers in the US, UK, Canada, Australia and New Zealand. Not yet suitable for restricted categories (finance, health, legal, gambling, alcohol, adult, political), the EU (not open yet), or hyper-local targeting (country-level only for now).
+
+## Organic and paid
+ChatGPT Ads is the paid half of Calibre's AI work. Get Found makes AI recommend your brand inside its own answers (earned, organic); ChatGPT Ads put a sponsored placement in the same conversation (paid). Run together, you cover the whole AI conversation.
+
+## Use it
+- ChatGPT Ads, book a setup sprint: https://ads.calibrestudio.co/
+- Be Found, free AI visibility check: https://indexed.calibrestudio.co/
+- Get Found, AI visibility offerings: https://getfound.calibrestudio.co/
+- Calibre Studio: https://www.calibrestudio.co/
+- Book a call: https://calendly.com/calibrestudio
+
+## About
+Calibre Studio is a creative and AI studio between the Gold Coast and Paris. ChatGPT Ads is its paid AI-advertising offering; Get Found (Indexed) is its organic AI visibility work; Directed is its brand and film work. Together they make a brand worth seeing, easy for AI to find, and present where buyers are deciding.
