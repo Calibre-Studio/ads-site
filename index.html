@@ -219,6 +219,16 @@
     });
   }
 
+  var reelVid = document.querySelector('.footer-reel video');
+  if (reelVid) {
+    reelVid.muted = true;
+    var playReel = function () { var p = reelVid.play(); if (p && p.catch) p.catch(function () {}); };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) playReel(); }); }, { threshold: 0.15 }).observe(reelVid);
+    }
+    playReel();
+  }
+
   var totop = document.querySelector('.footer-totop');
   if (totop) {
     totop.addEventListener('click', function () {
