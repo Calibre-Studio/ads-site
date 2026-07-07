@@ -26,12 +26,12 @@
 
 <main>
 
-<section class="hero wrap hero-reveal reveal">
-  <p class="eyebrow"><span class="slash">//</span> ChatGPT Ads</p>
-  <h1 class="display">Be the answer inside ChatGPT.</h1>
-  <p class="lead">Your next customer is asking ChatGPT right now. We run the ads that put your brand in the conversation, at the exact moment they're deciding.</p>
-  <p style="margin-top:clamp(28px,4vw,40px)"><a class="btn-link" href="#book"><span>Book a setup sprint</span><span class="arr" aria-hidden="true">&rarr;</span></a></p>
-  <p class="form-note" style="margin-top:18px">You're reading this because a ChatGPT ad worked.</p>
+<section class="hero wrap hero-reveal">
+  <p class="eyebrow ar" style="--d:0s"><span class="slash">//</span> ChatGPT Ads</p>
+  <h1 class="display"><span class="aw" style="--d:0.12s">Be</span> <span class="aw" style="--d:0.19s">the</span> <span class="aw" style="--d:0.26s">answer</span> <span class="aw" style="--d:0.33s">inside</span> <span class="aw" style="--d:0.4s">ChatGPT.</span></h1>
+  <p class="lead ar" style="--d:0.5s">Your next customer is asking ChatGPT right now. We run the ads that put your brand in the conversation, at the exact moment they're deciding.</p>
+  <p class="ar" style="--d:0.62s;margin-top:clamp(28px,4vw,40px)"><a class="btn-link" href="#book"><span>Book a setup sprint</span><span class="arr" aria-hidden="true">&rarr;</span></a></p>
+  <p class="form-note ar" style="--d:0.72s;margin-top:18px">You're reading this because a ChatGPT ad worked.</p>
 </section>
 
 <section class="offer wrap reveal" id="why">
@@ -198,6 +198,8 @@
 <script>
 (function () {
   var els = document.querySelectorAll('.reveal, .stagger, .r, .sg, .hero-reveal');
+  var vh = window.innerHeight || 0;
+  els.forEach(function (el) { var r = el.getBoundingClientRect(); if (r.top < vh * 0.92 && r.bottom > 0) el.classList.add('in'); });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
