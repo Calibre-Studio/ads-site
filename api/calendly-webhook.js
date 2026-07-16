@@ -4,9 +4,11 @@
 // hashes the invitee email (SHA-256), and posts server-side conversion events:
 //   - lead_created            (id = eid  → dedupes with the browser pixel event)
 //   - appointment_scheduled   (id = appt_<eid> → the actual booking signal)
-// Env vars required: OAI_PIXEL_ID, OAI_CAPI_KEY
+// Env vars required: OAI_PIXEL_ID, OAI_CONVERSION_KEY (or OAI_CAPI_KEY)
 
 const crypto = require('crypto');
+
+const CAPI_KEY = () => process.env.OAI_CONVERSION_KEY || process.env.OAI_CAPI_KEY || '';
 
 const ENDPOINT = 'https://bzr.openai.com/v1/events';
 
@@ -29,7 +31,7 @@ async function postEvents(events, validateOnly) {
   const res = await fetch(url, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${process.env.OAI_CAPI_KEY || ''}`,
+      Authorization: `Bearer ${CAPI_KEY()}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ validate_only: !!validateOnly, events }),
@@ -46,7 +48,7 @@ module.exports = async (req, res) => {
       service: 'calibre-capi',
       env: {
         pixel: !!process.env.OAI_PIXEL_ID,
-        key: !!process.env.OAI_CAPI_KEY,
+        key: !!CAPI_KEY(),
       },
     });
   }
